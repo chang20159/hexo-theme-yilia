@@ -147,5 +147,19 @@
                 border:1px solid #086ef6;
             }
         }
+        a.home{
+            background: #afb6ca;
+            border:1px solid #afb6ca;
+            &:hover {
+                border:1px solid #909ab6;
+            }
+        }
+        a.book{
+            background: #fd4c5d;
+            border:1px solid #fd4c5d;
+            &:hover {
+                border:1px solid #fd4c5d;
+            }
+        }
     }
 }

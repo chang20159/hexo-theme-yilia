@@ -19,13 +19,16 @@
 	        <%}%>
 			</ul>
 		</nav>
-		<nav class="header-smart-menu">
-    		<% for (var i in theme.smart_menu){ %>
-    			<% if(theme.smart_menu[i]){ %>
-    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a>
-    			<% } %>
-            <%}%>
-		</nav>
+		<% if(theme.smart_menu){%>
+			<nav class="header-smart-menu">
+	    		<% for (var i in theme.smart_menu){ %>
+	    			<% if(theme.smart_menu[i]){ %>
+	    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a>
+	    			<% } %>
+	            <%}%>
+			</nav>
+		<%}%>
+		
 		<nav class="header-nav">
 			<div class="social">
 				<% for (var i in theme.subnav){ %>

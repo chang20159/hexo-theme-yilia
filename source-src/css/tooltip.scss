@@ -30,12 +30,11 @@
 
     .tooltip-content {
         position: absolute;
-        background: rgba(36,193,246,0.9);
+        background: #4a4a4a;
         z-index: 9999;
         width: 200px;
-        bottom: 50%;
         margin-bottom: -10px;
-        border-radius: 20px;
+        border-radius: 2px;
         font-size: 1.1em;
         text-align: center;
         color: #fff;
