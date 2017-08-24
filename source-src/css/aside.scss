@@ -31,7 +31,7 @@
     cursor: pointer;
     width: 40px;
     height: 80px;
-    opacity: .8;
+    //opacity: .8;
 }
 .jump-plan-container {
     position: absolute;
@@ -107,6 +107,9 @@
             max-height: 500px;
             overflow-x: hidden;
             overflow-y: auto;
+        }
+        .toc-article::-webkit-scrollbar {
+          display: none;
         }
         .toc-article li ol, .toc-article li ul {
             margin-left: 30px;
