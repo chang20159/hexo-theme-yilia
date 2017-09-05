@@ -46,7 +46,7 @@ show_all_link: '展开全文'
 # 数学公式
 mathjax: false
 # 是否在新窗口打开链接
-open_in_new: false
+open_in_new: true
 
 # 打赏
 # 打赏type设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏
@@ -67,7 +67,7 @@ toc_hide_index: true
 toc_empty_wording: '目录，不存在的…'
 
 # 是否有快速回到顶部的按钮
-top: tru
+top: true
 
 # Miscellaneous
 baidu_analytics: 'c044325210daededa91f1e0e580a6f1d'
@@ -128,4 +128,12 @@ slider:
 
 aboutme: 很惭愧<br><br>只做了一点微小的工作<br>谢谢大家
 
+##以下新增
+
+##音乐播放器
 music: "//music.163.com/outchain/player?type=2&id=29567192&auto=0&height=66"
+
+## 版权声明  0-关闭版权声明； 1-文章对应的md文件里有declare:true属性，才有版权声明； 2-所有文章均有版权声明
+declare_type: 1
+licensee_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+licensee_name: '署名-非商业性使用-相同方式共享 4.0 国际(CC BY-NC-SA 4.0)'
