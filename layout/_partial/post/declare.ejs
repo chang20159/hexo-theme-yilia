@@ -1,0 +1,5 @@
+<% if ((theme.declare.type === 2 || (theme.declare.type === 1 && post.declare)) && !index){ %>
+	<div class="declare">
+	  <strong>版权声明：</strong>本文采用<a rel="license" href="<%= theme.declare.licensee_url%>"><%= theme.declare.licensee_name%></a>许可协议。转载请注明出处！
+	</div>
+<% } %>
