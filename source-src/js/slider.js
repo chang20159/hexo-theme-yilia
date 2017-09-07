@@ -39,6 +39,7 @@ function init() {
 			items: [],
 			jsonFail: false,
 			showTags: false,
+			showCategories: false,
 			search: ''
 		},
 	    methods: {
@@ -55,6 +56,10 @@ function init() {
 	    		app.$set('showTags', !app.showTags)
 	    		window.localStorage && window.localStorage.setItem(localTagKey, app.showTags)
 	    	},
+	    	toggleSwitch: (e,type) => {
+	    		app.$set(type, !app[type])
+	    		// window.localStorage && window.localStorage.setItem(localTagKey, app[type])
+	    	},
 	        openSlider: (e, type) => {
 	        	e.stopPropagation()
 	        	if (!type) {
@@ -69,6 +74,19 @@ function init() {
   				app.$set(type, true)
   				app.$set('isShow', true)
   				app.$set('isCtnShow', true)
+  				setScrollZero()
+			},
+			toggleSlider: (e, type) => {
+	        	e.stopPropagation()
+	        	if(app[type]){
+	        		app.$set(type, false)
+	        		app.$set('isShow', false)
+	        		app.$set('isCtnShow', false)
+	        	}else{
+	        		app.$set(type, true)
+	        		app.$set('isShow', true)
+	        		app.$set('isCtnShow', true)
+	        	}
   				setScrollZero()
 			}
 	    },
@@ -104,6 +122,10 @@ function init() {
 			val = val.substr(1, val.length)
 			type = 'tag'
 		}
+		if (val.indexOf('@') === 0) {
+			val = val.substr(1, val.length)
+			type = 'category'
+		}
 		let items = app.items
 	  	items.forEach((item) => {
 	  		let matchTitle = false
@@ -118,7 +140,15 @@ function init() {
 	      		}
 	  		})
 
-	  		if ((type === 'title' && matchTitle) || (type === 'tag' && matchTags)) {
+	  		let matchCategory = false
+	  		console.log(item)
+	  		item.categories.forEach((category) => {
+	  			if (category.name.toLowerCase().indexOf(val) > -1) {
+	      			matchCategory = true
+	      		}
+	  		})
+
+	  		if ((type === 'title' && matchTitle) || (type === 'tag' && matchTags) || (type === 'category' && matchCategory)) {
 	  			item.isShow = true
 	  		} else {
 	  			item.isShow = false
@@ -186,6 +216,24 @@ function init() {
 			app.$set('isShow', true)
 			app.$set('isCtnShow', true)
 			app.$set('search', '#' + $em.innerHTML)
+			setScrollZero()
+			return false
+		}
+	}
+
+	// 标签
+	let $categories = document.querySelectorAll('a.js-category')
+	for (var i = 0, len = $categories.length; i < len; i++) {
+		let $em = $categories[i]
+		$em.setAttribute('href', 'javascript:void(0)')
+		$em.onclick = (e) => {
+			e.stopPropagation()
+			app.$set('innerArchive', true)
+			app.$set('friends', false)
+			app.$set('aboutme', false)
+			app.$set('isShow', true)
+			app.$set('isCtnShow', true)
+			app.$set('search', '@' + $em.innerHTML)
 			setScrollZero()
 			return false
 		}

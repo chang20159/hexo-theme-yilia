@@ -115,7 +115,7 @@
         var disqus_config = function () {
           this.page.url = '<%= page.permalink %>';
           this.page.identifier = '<%= page.path %>';
-          this.page.title = '<%= page.title || addslashes %>';
+          this.page.title = '<%= page.title %>';
           this.language = 'zh';
           console.log(this.page)
         };

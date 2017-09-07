@@ -1,5 +1,5 @@
 <%
-  var hasInnerArchive = theme.smart_menu && theme.smart_menu.innerArchive
+  var hasInnerArchive = theme.smart_menu && theme.smart_menu.innerArchive || theme.search
   var hasFriends = theme.smart_menu && theme.smart_menu.friends
   var hasAboutme = theme.smart_menu && theme.smart_menu.aboutme
 %>
@@ -31,7 +31,7 @@
           <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
         </div>
         <div class="widget tagcloud search-tag">
-          <p class="search-tag-wording">tag:</p>
+          <p class="search-tag-wording">标签:</p>
           <label class="search-switch">
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
@@ -39,6 +39,20 @@
             <% site.tags.forEach(function(tag, i){ %> 
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color<%= tag.name.length % 5 + 1 %>"><%-tag.name%></a>
+              </li>
+            <% }) %>
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+         <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">分类:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleSwitch(e,'showCategories')" q-attr="checked:showCategories">
+          </label>
+          <ul class="article-tag-list" q-show="showCategories">
+            <% site.categories.forEach(function(tag, i){ %> 
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-category color<%= tag.name.length % 5 + 1 %>"><%-tag.name%></a>
               </li>
             <% }) %>
             <div class="clearfix"></div>
@@ -70,7 +84,7 @@
 </pre>
           </p>
           <li class="search-li" q-repeat="items" q-show="isShow">
-            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <a q-attr="href:path|urlformat" class="search-title"><span q-text="title"></span></a>
             <p class="search-time">
               <i class="icon-calendar icon"></i>
               <span q-text="date|dateformat"></span>
